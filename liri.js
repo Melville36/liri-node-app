@@ -29,7 +29,7 @@ var liriCommand = process.argv[3];
 
 if(liriRequest === "my-tweets"){
 	var params = {q: '@TOTHHomes'};
-	tweetRequest.stream('search/tweets ', params, function(error, tweets, response) {
+	tweetRequest.twitterKeys.get('search/tweets ', params, function(error, tweets, response) {
 	  if (!error) {
 	    console.log(tweets);
 	  }
@@ -38,13 +38,20 @@ if(liriRequest === "my-tweets"){
 
 
 if(liriRequest === "spotify-this-song"){
-	spotify.search({ type: 'track', query: liriCommand})
-		  .then(function(response) {
-		    console.log(response);
-		  })
-		  .catch(function(err) {
-		    console.log(err);
-		  });
+	spotify.search({ type: 'album', query: liriCommand }, function(err, data) {
+		  if (err) {
+		    return console.log('Error occurred: ' + err);
+		  }
+		 	//for (var i = 0; i < data.tracks.items.length; i++){
+		 		var artist = data.albums.items[0].artists[0].name;
+		 		var album = data.albums.items[0].name;
+		 		
+		 		console.log("Artist(s): " + artist + " Album Name: " + album + " Song Link: " );
+		 		
+		 	//}
+		 	console.log(data.albums);
+			 
+		});
 }
 
 if(liriRequest === "movie-this"){

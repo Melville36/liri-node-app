@@ -1,5 +1,5 @@
 {
-  "name": "liri-node-app",
+  "name": "liri",
   "version": "1.0.0",
   "description": "Liri HW",
   "main": "keys.js",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Melville36/liri-node-app/issues"
   },
-  "homepage": "https://github.com/Melville36/liri-node-app#readme"
+  "homepage": "https://github.com/Melville36/liri-node-app#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "node-spotify-api": "^1.0.6",
+    "request": "^2.81.0",
+    "twitter": "^1.7.1"
+  }
 }
